@@ -80,11 +80,14 @@ Cada verificação ganha a sua própria pasta, dentro de `WinDiag` na Área de T
 
 ## Teste de desempenho (botão "Testar desempenho")
 
-Botão separado da verificação, na tela inicial. Leva cerca de 1 minuto e não altera nada no computador:
+Botão separado da verificação, na tela inicial. Leva de 3 a 4 minutos e não altera nada no computador (só cria um arquivo temporário de até 1 GB no disco, apagado no fim):
 
 - **Processador**: pontuação com um núcleo e com todos os núcleos, queda de desempenho durante o teste (sinal de superaquecimento ou limite de energia), temperatura aproximada e comparação com o teste anterior.
-- **Memória RAM**: grava e confere 5 padrões em até 2 GB da memória livre e mede a velocidade. Também avisa se a memória está em canal simples ou abaixo da velocidade nominal (XMP/EXPO desligado). É uma amostra: não substitui o MemTest86.
-- **Placa de vídeo**: animação 3D em quatro níveis de carga, medindo quadros por segundo, em um processo separado (se o driver travar, o WinDiag não cai junto). A temperatura vem do `nvidia-smi` nas placas NVIDIA; nas AMD/Intel é lida do driver gráfico do Windows e, se o driver não informar, aparece como "n/d".
+- **Memória RAM**: usa vários núcleos ao mesmo tempo e até 8 GB (60% da memória livre). Grava e confere 8 padrões (zeros, uns, 1010, 0101, endereço, bit andando, bit andando invertido, pseudoaleatório), faz duas "inversões em movimento" (acham células que não trocam de valor) e uma conferência depois de 6 segundos de espera (acha células que perdem o valor). Mede a velocidade e avisa se a memória está em canal simples ou abaixo da velocidade nominal (XMP/EXPO desligado). É uma amostra da memória livre: o Windows não deixa testar o que ele mesmo usa, então para um teste completo use o MemTest86.
+- **Disco**: velocidade de escrita e leitura sequencial (sem o cache do Windows), leituras aleatórias de 4 KB, conferência do conteúdo gravado e a saúde informada pelo próprio disco (estado, desgaste do SSD, temperatura e erros sem correção, quando o disco informa).
+- **Placa de vídeo**: animação 3D em seis níveis de carga (até cerca de 3,5 milhões de triângulos), medindo quadros por segundo, em um processo separado (se o driver travar, o WinDiag não cai junto). A temperatura vem do `nvidia-smi` nas placas NVIDIA; nas AMD/Intel é lida do driver gráfico do Windows e, se o driver não informar, aparece como "n/d".
+
+Se o Windows já tiver notas guardadas (WinSAT), elas aparecem no fim só para comparar.
 
 Os resultados ficam num relatório HTML na pasta da verificação, e os pontos são guardados em `%LOCALAPPDATA%\WinDiag\bench.json` para comparar com o próximo teste. Os pontos só servem para comparar o computador com ele mesmo.
 
@@ -220,7 +223,7 @@ O WinDiag aponta apenas para fontes oficiais: o Microsoft Update Catalog e as p�
 | `WinDiag-Extras.ps1` | Verificações extras, ferramentas de reparo, comparação entre verificações e histórico de alterações |
 | `Instalar-WinDiag.bat` / `Desinstalar-WinDiag.bat` | Instala/remove o WinDiag para o usuário atual |
 | `Gerar-Release.ps1` | Gera o ZIP versionado e os checksums (para publicar no GitHub) |
-| `WinDiag-Bench.ps1` | Teste de desempenho: processador, memória RAM e placa de vídeo |
+| `WinDiag-Bench.ps1` | Teste de desempenho: processador, memória RAM, disco e placa de vídeo |
 | `WinDiag-Worker.ps1` | Ponte entre a janela e o motor; roda em segundo plano |
 | `WinDiag.ps1` | O motor de diagnóstico e reparo (também funciona sozinho, no console) |
 | `Criar-Atalho.bat` / `Criar-Atalho.ps1` | Cria o atalho com ícone na Área de Trabalho e no Menu Iniciar |
