@@ -97,12 +97,13 @@ Os resultados ficam num relatório HTML na pasta da verificação, e os pontos s
 
 ## Monitor em tempo real (para PC que desliga sozinho em jogos)
 
-Em **Ferramentas > Monitor em tempo real** você liga um registro que lê, a cada 2 segundos, o que o **HWiNFO** (com *Shared Memory Support* ligado), o **MSI Afterburner** e o **LibreHardwareMonitor** já publicam: temperaturas, tensões da fonte (+12 V, +5 V, +3,3 V), consumo, uso e, no MSI Afterburner, os quadros por segundo. Sem nenhum deles, grava o uso do processador e da memória e a temperatura da placa de vídeo (NVIDIA/AMD).
+Em **Ferramentas > Monitor em tempo real** você liga um registro que lê, a cada **meio segundo (0,5 s)**, o que o **HWiNFO** (com *Shared Memory Support* ligado), o **MSI Afterburner** e o **LibreHardwareMonitor** já publicam: temperaturas, tensões da fonte (+12 V, +5 V, +3,3 V), consumo, uso e, no MSI Afterburner, os quadros por segundo. Sem nenhum deles, grava o uso do processador e da memória e a temperatura da placa de vídeo (NVIDIA/AMD).
 
 - Cada leitura é gravada e forçada para o disco na hora. Se o computador desligar no meio do jogo, o último registro mostra como estavam temperatura e tensão no momento da queda.
 - Depois, **Ver o último registro** mostra os últimos 90 segundos e a provável causa: calor, tensão da fonte instável ou nada de anormal (o que costuma indicar corte de energia). O WinDiag confere no log do Windows se foi mesmo uma queda (Kernel-Power 41) ou um desligamento normal.
-- Roda em um processo próprio e escondido, só enquanto você deixar ligado; **não liga sozinho com o Windows** e não instala nada. Os registros ficam em `%LOCALAPPDATA%\WinDiag\Monitor` (as 15 sessões mais recentes). A próxima verificação também avisa se a última sessão foi interrompida por uma queda.
-- Limitações: a leitura é a cada 2 s, então um pico mais curto pode passar; os sensores de tensão da placa-mãe têm erro de alguns %; o disco pode manter as últimas linhas em cache se a energia cair no mesmo instante.
+- Roda em um processo próprio e escondido, só enquanto você deixar ligado; **não liga sozinho com o Windows** e não instala nada. Os registros ficam em `%LOCALAPPDATA%\WinDiag\Monitor` (as 10 sessões mais recentes). A próxima verificação também avisa se a última sessão foi interrompida por uma queda.
+- Para o HWiNFO acompanhar o ritmo, deixe o intervalo de atualização dos sensores dele (engrenagem da janela de sensores) em 500 ms; o padrão é 2000 ms e, com ele, os valores repetem entre as leituras. O registro ocupa cerca de 3 MB por hora de jogo (guarda as 10 sessões mais recentes).
+- Limitações: a leitura é a cada 0,5 s, então um pico mais curto pode passar; os sensores de tensão da placa-mãe têm erro de alguns %; o disco pode manter as últimas linhas em cache se a energia cair no mesmo instante.
 
 ## Ferramentas de reparo e restauração
 
