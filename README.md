@@ -13,7 +13,7 @@ O WinDiag foi pensado para achar o que o diagnóstico padrão do Windows **não 
 | Hardware | Processador, memória (módulos, tipo, velocidade, canal único, RAM utilizável x instalada), placa(s) de vídeo, placa-mãe, BIOS/UEFI, Secure Boot, TPM, rede (velocidade negociada), áudio, monitores, bateria (saúde e ciclos), temperatura, inventário de dispositivos | Espalhado por vários lugares |
 | Discos | Saúde, temperatura, desgaste do SSD, horas de uso, erros de leitura/escrita **não corrigidos**, previsão de falha SMART | Só o status geral |
 | Volumes | Espaço livre e varredura online de erros (NTFS/ReFS) | Parcialmente |
-| Eventos (últimos N dias) | Falhas de I/O, corrupção NTFS, resets do controlador NVMe/SATA, erros de hardware (WHEA), travamentos do driver de vídeo, desligamentos inesperados, **telas azuis com o código e a causa provável**, drivers bloqueados ou que não carregaram | Espalhado pelo Visualizador de Eventos |
+| Eventos (últimos N dias) | Falhas de I/O, corrupção NTFS, resets do controlador NVMe/SATA, erros de hardware (WHEA), travamentos do driver de vídeo, desligamentos inesperados, **telas azuis com o código, os parâmetros e a causa provável**, desligamentos inesperados detalhados (com ou sem tela azul, botão de ligar, horários mais comuns), erros de hardware WHEA (fatais e corrigidos), texto completo dos erros do driver de vídeo, drivers bloqueados ou que não carregaram | Espalhado pelo Visualizador de Eventos |
 | Drivers com erro | Dispositivos com código de erro, com explicação em português e o que fazer | Só o código |
 | Drivers "escondidos" | Vídeo com driver genérico, drivers sem assinatura, drivers de terceiros antigos, drivers de sistema que falharam ao iniciar, instalações de driver que falharam (`setupapi.dev.log`) | **Não** |
 | Driver de vídeo sobrescrito | Compara o driver em uso com os pacotes do fabricante já guardados no sistema e com o histórico do Windows Update | **Não** |
@@ -94,6 +94,15 @@ Botão separado da verificação, na tela inicial. Leva de 3 a 4 minutos e não 
 Se o Windows já tiver notas guardadas (WinSAT), elas aparecem no fim só para comparar.
 
 Os resultados ficam num relatório HTML na pasta da verificação, e os pontos são guardados em `%LOCALAPPDATA%\WinDiag\bench.json` para comparar com o próximo teste. Os pontos só servem para comparar o computador com ele mesmo.
+
+## Monitor em tempo real (para PC que desliga sozinho em jogos)
+
+Em **Ferramentas > Monitor em tempo real** você liga um registro que lê, a cada 2 segundos, o que o **HWiNFO** (com *Shared Memory Support* ligado), o **MSI Afterburner** e o **LibreHardwareMonitor** já publicam: temperaturas, tensões da fonte (+12 V, +5 V, +3,3 V), consumo, uso e, no MSI Afterburner, os quadros por segundo. Sem nenhum deles, grava o uso do processador e da memória e a temperatura da placa de vídeo (NVIDIA/AMD).
+
+- Cada leitura é gravada e forçada para o disco na hora. Se o computador desligar no meio do jogo, o último registro mostra como estavam temperatura e tensão no momento da queda.
+- Depois, **Ver o último registro** mostra os últimos 90 segundos e a provável causa: calor, tensão da fonte instável ou nada de anormal (o que costuma indicar corte de energia). O WinDiag confere no log do Windows se foi mesmo uma queda (Kernel-Power 41) ou um desligamento normal.
+- Roda em um processo próprio e escondido, só enquanto você deixar ligado; **não liga sozinho com o Windows** e não instala nada. Os registros ficam em `%LOCALAPPDATA%\WinDiag\Monitor` (as 15 sessões mais recentes). A próxima verificação também avisa se a última sessão foi interrompida por uma queda.
+- Limitações: a leitura é a cada 2 s, então um pico mais curto pode passar; os sensores de tensão da placa-mãe têm erro de alguns %; o disco pode manter as últimas linhas em cache se a energia cair no mesmo instante.
 
 ## Ferramentas de reparo e restauração
 
@@ -228,6 +237,7 @@ O WinDiag aponta apenas para fontes oficiais: o Microsoft Update Catalog e as p�
 | `Instalar-WinDiag.bat` / `Desinstalar-WinDiag.bat` | Instala/remove o WinDiag para o usuário atual |
 | `Gerar-Release.ps1` | Gera o ZIP versionado e os checksums (para publicar no GitHub) |
 | `WinDiag-Bench.ps1` | Teste de desempenho: processador, memória RAM, disco e placa de vídeo |
+| `WinDiag-Monitor.ps1` | Monitor em tempo real (HWiNFO, MSI Afterburner, LibreHardwareMonitor) com registro à prova de queda |
 | `WinDiag-Worker.ps1` | Ponte entre a janela e o motor; roda em segundo plano |
 | `WinDiag.ps1` | O motor de diagnóstico e reparo (também funciona sozinho, no console) |
 | `Criar-Atalho.bat` / `Criar-Atalho.ps1` | Cria o atalho com ícone na Área de Trabalho e no Menu Iniciar |
