@@ -6,6 +6,12 @@ O Telomera foi pensado para achar o que o diagnóstico padrão do Windows **não
 
 > **Aviso:** use por sua conta e risco. O script só altera algo depois de você confirmar cada ação, mas mexer em drivers e discos sempre tem risco. Mantenha backup dos seus arquivos.
 
+## Novidades da 2.30.0
+
+- Novo visual em todas as telas (redesenho com referência em apps como Windows 11 e CCleaner): barra de ações de Resultados reduzida de 7 para 4 botões (Relatório, PDF, Copiar resumo e Abrir pasta agora ficam dentro de "Exportar ▾"); Configurações com toggles no lugar das caixinhas; Início com a nota de saúde em um anel e "Configurações" movido para um ícone no cabeçalho; Progresso com um anel grande no lugar da barra linear; Detalhes técnicos com margem em vez de texto colado na borda; Fim com lista de marcas de verificação no lugar do texto corrido; Ferramentas de reparo com um ícone em cada item da barra lateral.
+- Ícone do programa (área de trabalho, atalho, barra de tarefas, instalador) com cantos arredondados, no mesmo estilo dos ícones modernos do Windows.
+- O título da janela e o diálogo de permissão (UAC) foram simplificados: agora mostram só "Telomera" (e a versão, na janela), sem o subtítulo "diagnóstico do computador".
+
 ## Novidades da 2.29.0
 
 - Rebrand completo: o programa agora se chama Telomera por dentro também (não só na tela). Scripts, pasta de instalação (`%LOCALAPPDATA%\Programs\Telomera`), dados (`%LOCALAPPDATA%\Telomera`) e o registro em "Aplicativos e recursos" usam o nome novo. Quem já tinha o WinDiag instalado é migrado automaticamente ao atualizar (dados preservados, atalho antigo removido, nada precisa ser feito manualmente).
