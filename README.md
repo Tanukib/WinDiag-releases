@@ -6,6 +6,11 @@ O Telomera foi pensado para achar o que o diagnóstico padrão do Windows **não
 
 > **Aviso:** use por sua conta e risco. O script só altera algo depois de você confirmar cada ação, mas mexer em drivers e discos sempre tem risco. Mantenha backup dos seus arquivos.
 
+## Novidades da 2.32.2
+
+- Tela "Teste de desempenho" reorganizada: as opções extras (incluir teste longo, prolongar estresse de vídeo, modo mais pesado, prolongar memória/disco) agora têm um título curto e uma descrição menor embaixo, no mesmo padrão dos testes principais — antes o texto inteiro ficava dentro da caixinha e, por não quebrar linha do jeito esperado, vazava para fora da janela e era cortado na borda.
+- Corrigido texto escuro (quase ilegível no tema escuro) nos botões de opção e caixinhas dessa tela e da tela "Tipo de verificação": a cor do texto não estava sendo definida explicitamente nesses dois controles, então em alguns computadores o Windows desenhava o texto na cor padrão do tema do sistema (escura) em vez da cor clara do Telomera.
+
 ## Novidades da 2.32.1
 
 - Leitor rápido de eventos (C#) corrigido: tentava ler `Id` do evento como `int?` quando a classe do .NET usada (`EventRecord`) devolve um `int` comum; isso fazia o leitor rápido falhar ao compilar e o app cair sempre no modo padrão, mais lento, para o histórico de eventos.
