@@ -6,6 +6,11 @@ O Telomera foi pensado para achar o que o diagnóstico padrão do Windows **não
 
 > **Aviso:** use por sua conta e risco. O script só altera algo depois de você confirmar cada ação, mas mexer em drivers e discos sempre tem risco. Mantenha backup dos seus arquivos.
 
+## Novidades da 2.32.0
+
+- Verificação profunda agora também confere os aplicativos instalados: lê a lista de programas do Windows e, por amostragem, confere se os .exe/.dll de cada um ainda batem com a assinatura digital deles (sinal forte de arquivo corrompido ou alterado) e se a pasta de instalação registrada ainda existe. Não corrige nada sozinho — só orienta a reinstalar/reparar o programa afetado, porque reescrever o executável de outro programa é arriscado.
+- Botão de Configurações (engrenagem) e "Voltar ao início" maiores no cabeçalho — estavam pequenos demais no tema escuro novo.
+
 ## Novidades da 2.31.1
 
 - Texto do link "O que o Telomera faz e o que nunca faz sozinho" (Início) atualizado: ainda citava o nome antigo "WinDiag" e não mencionava os sensores nem o teste de desempenho, que já existiam no app.
