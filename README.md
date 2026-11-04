@@ -6,6 +6,12 @@ O Telomera foi pensado para achar o que o diagnóstico padrão do Windows **não
 
 > **Aviso:** use por sua conta e risco. O script só altera algo depois de você confirmar cada ação, mas mexer em drivers e discos sempre tem risco. Mantenha backup dos seus arquivos.
 
+## Novidades da 2.35.0
+
+- Nova verificação "Requisitos de jogos": o Telomera agora confere se faltam os componentes que a maioria dos jogos precisa para abrir (não drivers de placa de vídeo -- isso já era verificado antes -- e sim os "runtimes" que os jogos instalam ou exigem): Visual C++ Redistributável (x64 e x86, 2015-2022), o pacote "DirectX End-User Runtime" (arquivos .dll mais antigos que muitos jogos ainda empacotam separadamente), o NVIDIA PhysX System Software e o Microsoft XNA Framework 4.0 (estes dois últimos só avisados como opcionais, pois só alguns jogos específicos usam).
+- Por enquanto é **só detecção**: o achado explica o que falta e traz o link oficial (Microsoft ou NVIDIA) para você baixar e instalar -- o Telomera não baixa nem instala nada automaticamente nesta versão.
+- A lista de 8 arquivos usada para detectar o DirectX End-User Runtime (`d3dx9_43.dll` e outros) foi confirmada contra um artigo da winhelponline.com, não documentação oficial da Microsoft -- avise se o Telomera disser que falta um arquivo que você confirmar estar presente.
+
 ## Novidades da 2.34.0
 
 - **Corrigido bug crítico na 2.33.x**: a tela "Otimizar o Windows" estava, para três itens, fazendo o oposto do que diz. Ao marcar "Desligar a economia de energia do PCIe", "Desligar a economia de energia do USB" ou "Desligar a inicialização rápida" e aplicar, o Telomera na verdade LIGAVA essas opções (a função que aplica as mudanças usava o valor errado por engano). Quem já usou a otimização numa versão 2.33.0 ou 2.33.1 e marcou algum desses três itens deve rodar "Desfazer as mudanças de configuração" e depois aplicar de novo nesta versão para corrigir. O item "Impedir apps da Microsoft Store de segundo plano" e o plano de energia não tinham esse problema.
