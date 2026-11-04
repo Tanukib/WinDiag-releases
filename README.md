@@ -6,6 +6,10 @@ O Telomera foi pensado para achar o que o diagnóstico padrão do Windows **não
 
 > **Aviso:** use por sua conta e risco. O script só altera algo depois de você confirmar cada ação, mas mexer em drivers e discos sempre tem risco. Mantenha backup dos seus arquivos.
 
+## Novidades da 2.33.0
+
+- Nova função "Otimizar o Windows" na tela inicial: mostra uma lista de ajustes conhecidos e reversíveis (GPU, PCIe, USB, inicialização rápida, plano de energia, apps da Microsoft Store em segundo plano, limpeza de temporários, Lixeira, cache do Windows Update) e também os programas que iniciam com o Windows, para você marcar o que quiser. Uma confirmação só aplica tudo de uma vez; "Reativar programas desativados pela otimização" em Ferramentas de reparo desfaz a parte da inicialização, e "Desfazer as mudanças de configuração" (já existente) agora também cobre o plano de energia e os apps em segundo plano. Nada do que tutoriais de internet costumam recomendar de forma arriscada (desativar antivírus, remover apps do sistema, mexer em serviços sem necessidade) entrou aqui — só o que é documentado e reversível.
+
 ## Novidades da 2.32.3
 
 - Corrigido: na tela "Teste de desempenho", as opções extras (incluir teste longo, prolongar estresse de vídeo, modo mais pesado, prolongar memória/disco) podiam ficar todas visíveis ao mesmo tempo em vez de só aparecer a do tipo de teste escolhido. A causa era o evento que atualiza as opções extras ao trocar de tipo de teste: estava registrado sem prender corretamente a referência da função que faz a atualização, então não disparava direito quando você clicava em outro tipo de teste.
