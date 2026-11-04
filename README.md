@@ -6,6 +6,12 @@ O Telomera foi pensado para achar o que o diagnóstico padrão do Windows **não
 
 > **Aviso:** use por sua conta e risco. O script só altera algo depois de você confirmar cada ação, mas mexer em drivers e discos sempre tem risco. Mantenha backup dos seus arquivos.
 
+## Novidades da 2.32.1
+
+- Leitor rápido de eventos (C#) corrigido: tentava ler `Id` do evento como `int?` quando a classe do .NET usada (`EventRecord`) devolve um `int` comum; isso fazia o leitor rápido falhar ao compilar e o app cair sempre no modo padrão, mais lento, para o histórico de eventos.
+- Botão "Voltar ao início" agora tem o mesmo desenho (cantos arredondados, realce ao passar o mouse) dos demais botões do app — antes usava um estilo de botão nativo do Windows, diferente do resto da interface.
+- Janela de desinstalação (`Desinstalar-Telomera.ps1`) atualizada para o tema escuro — ainda usava a paleta clara antiga e destoava do resto do app.
+
 ## Novidades da 2.32.0
 
 - Verificação profunda agora também confere os aplicativos instalados: lê a lista de programas do Windows e, por amostragem, confere se os .exe/.dll de cada um ainda batem com a assinatura digital deles (sinal forte de arquivo corrompido ou alterado) e se a pasta de instalação registrada ainda existe. Não corrige nada sozinho — só orienta a reinstalar/reparar o programa afetado, porque reescrever o executável de outro programa é arriscado.
