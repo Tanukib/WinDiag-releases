@@ -6,6 +6,10 @@ O Telomera foi pensado para achar o que o diagnóstico padrão do Windows **não
 
 > **Aviso:** use por sua conta e risco. O script só altera algo depois de você confirmar cada ação, mas mexer em drivers e discos sempre tem risco. Mantenha backup dos seus arquivos.
 
+## Novidades da 2.33.1
+
+- Corrigido o erro real reportado em uso: ao abrir "Otimizar o Windows", aparecia `"O termo 'Get-PlanoOtimizacao' não é reconhecido..."`. Causa: o `Telomera.exe` abre `Telomera-GUI.ps1` direto (não passa por `Telomera.ps1`), e a interface nunca carregava `Telomera-Extras.ps1` na própria janela — só os botões que rodam em segundo plano (Worker) tinham acesso a essas funções. A nova função "Otimizar o Windows" chamava o motor direto da janela, por isso quebrou. A interface agora carrega o motor completo (`Telomera.ps1`, que já carrega `Telomera-Extras.ps1` e `Telomera-Monitor.ps1`) também na própria thread, sem rodar nada da linha de comando. Foi adicionado um teste automático que detecta esse tipo de bug (função do motor chamada direto na interface sem o motor estar carregado ali) para não repetir.
+
 ## Novidades da 2.33.0
 
 - Nova função "Otimizar o Windows" na tela inicial: mostra uma lista de ajustes conhecidos e reversíveis (GPU, PCIe, USB, inicialização rápida, plano de energia, apps da Microsoft Store em segundo plano, limpeza de temporários, Lixeira, cache do Windows Update) e também os programas que iniciam com o Windows, para você marcar o que quiser. Uma confirmação só aplica tudo de uma vez; "Reativar programas desativados pela otimização" em Ferramentas de reparo desfaz a parte da inicialização, e "Desfazer as mudanças de configuração" (já existente) agora também cobre o plano de energia e os apps em segundo plano. Nada do que tutoriais de internet costumam recomendar de forma arriscada (desativar antivírus, remover apps do sistema, mexer em serviços sem necessidade) entrou aqui — só o que é documentado e reversível.
