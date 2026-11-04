@@ -6,6 +6,10 @@ O Telomera foi pensado para achar o que o diagnóstico padrão do Windows **não
 
 > **Aviso:** use por sua conta e risco. O script só altera algo depois de você confirmar cada ação, mas mexer em drivers e discos sempre tem risco. Mantenha backup dos seus arquivos.
 
+## Novidades da 2.32.3
+
+- Corrigido: na tela "Teste de desempenho", as opções extras (incluir teste longo, prolongar estresse de vídeo, modo mais pesado, prolongar memória/disco) podiam ficar todas visíveis ao mesmo tempo em vez de só aparecer a do tipo de teste escolhido. A causa era o evento que atualiza as opções extras ao trocar de tipo de teste: estava registrado sem prender corretamente a referência da função que faz a atualização, então não disparava direito quando você clicava em outro tipo de teste.
+
 ## Novidades da 2.32.2
 
 - Tela "Teste de desempenho" reorganizada: as opções extras (incluir teste longo, prolongar estresse de vídeo, modo mais pesado, prolongar memória/disco) agora têm um título curto e uma descrição menor embaixo, no mesmo padrão dos testes principais — antes o texto inteiro ficava dentro da caixinha e, por não quebrar linha do jeito esperado, vazava para fora da janela e era cortado na borda.
