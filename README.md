@@ -6,6 +6,10 @@ O Telomera foi pensado para achar o que o diagnóstico padrão do Windows **não
 
 > **Aviso:** use por sua conta e risco. O script só altera algo depois de você confirmar cada ação, mas mexer em drivers e discos sempre tem risco. Mantenha backup dos seus arquivos.
 
+## Novidades da 2.35.1
+
+- A verificação "Requisitos de jogos" (VC++, DirectX, PhysX, XNA) agora também aparece como ferramenta avulsa na aba **Drivers** ("Ver os requisitos de jogos"), sem precisar rodar "Verificar meu computador" inteiro -- mostra na hora o que está OK e o que falta, com o link oficial de cada um.
+
 ## Novidades da 2.35.0
 
 - Nova verificação "Requisitos de jogos": o Telomera agora confere se faltam os componentes que a maioria dos jogos precisa para abrir (não drivers de placa de vídeo -- isso já era verificado antes -- e sim os "runtimes" que os jogos instalam ou exigem): Visual C++ Redistributável (x64 e x86, 2015-2022), o pacote "DirectX End-User Runtime" (arquivos .dll mais antigos que muitos jogos ainda empacotam separadamente), o NVIDIA PhysX System Software e o Microsoft XNA Framework 4.0 (estes dois últimos só avisados como opcionais, pois só alguns jogos específicos usam).
