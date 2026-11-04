@@ -6,6 +6,10 @@ O Telomera foi pensado para achar o que o diagnóstico padrão do Windows **não
 
 > **Aviso:** use por sua conta e risco. O script só altera algo depois de você confirmar cada ação, mas mexer em drivers e discos sempre tem risco. Mantenha backup dos seus arquivos.
 
+## Novidades da 2.31.1
+
+- Texto do link "O que o Telomera faz e o que nunca faz sozinho" (Início) atualizado: ainda citava o nome antigo "WinDiag" e não mencionava os sensores nem o teste de desempenho, que já existiam no app.
+
 ## Novidades da 2.31.0
 
 - Tema escuro em todas as telas, igual à proposta de visual aprovada (a versão 2.30.0 tinha o novo layout, mas as cores ainda estavam claras por engano). Cores, contraste de texto e dos avisos (atenção/erro/sucesso) conferidos um a um contra o padrão de acessibilidade WCAG 2.2 AA.
