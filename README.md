@@ -6,6 +6,10 @@ O Telomera foi pensado para achar o que o diagnóstico padrão do Windows **não
 
 > **Aviso:** use por sua conta e risco. O script só altera algo depois de você confirmar cada ação, mas mexer em drivers e discos sempre tem risco. Mantenha backup dos seus arquivos.
 
+## Novidades da 2.31.0
+
+- Tema escuro em todas as telas, igual à proposta de visual aprovada (a versão 2.30.0 tinha o novo layout, mas as cores ainda estavam claras por engano). Cores, contraste de texto e dos avisos (atenção/erro/sucesso) conferidos um a um contra o padrão de acessibilidade WCAG 2.2 AA.
+
 ## Novidades da 2.30.0
 
 - Novo visual em todas as telas (redesenho com referência em apps como Windows 11 e CCleaner): barra de ações de Resultados reduzida de 7 para 4 botões (Relatório, PDF, Copiar resumo e Abrir pasta agora ficam dentro de "Exportar ▾"); Configurações com toggles no lugar das caixinhas; Início com a nota de saúde em um anel e "Configurações" movido para um ícone no cabeçalho; Progresso com um anel grande no lugar da barra linear; Detalhes técnicos com margem em vez de texto colado na borda; Fim com lista de marcas de verificação no lugar do texto corrido; Ferramentas de reparo com um ícone em cada item da barra lateral.
